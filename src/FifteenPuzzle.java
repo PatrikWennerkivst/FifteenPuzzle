@@ -48,7 +48,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
             JButton button = new JButton(String.valueOf(i));
             buttons.add(button);
             panel.add(button);
-            button.addActionListener(this);
+            button.addActionListener(new ButtonListener(this));
         }
 
 
@@ -56,7 +56,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         buttons.add(emptyButton);
         panel.add(emptyButton);
         emptyIndex = 15;
-        emptyButton.addActionListener(this);
+        emptyButton.addActionListener(new ButtonListener(this));
 
         panel.revalidate(); //''
         panel.repaint(); //Uppdaterar panelens layout och säkerställer att alla ändringar visas korrekt.
