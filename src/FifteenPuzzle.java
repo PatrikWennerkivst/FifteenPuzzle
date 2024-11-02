@@ -42,6 +42,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public void newGame() {
         panel.removeAll();
         buttons.clear();
+        
 
 
         for (int i = 1; i <= 15; i++) { // läggs till i till i både buttons-listan och panel.
