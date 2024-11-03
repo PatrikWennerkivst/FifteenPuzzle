@@ -24,6 +24,9 @@ public class ButtonListener implements ActionListener {
             ChangeButton(indexOfButton, emptyIndex);
             fifteenPuzzle.setEmptyIndex(indexOfButton);
 
+            if (CheckWinner.winnerCheck(FifteenPuzzle.getButtons())) {
+                CheckWinner.winMessage(); // hämtar metoden ifr winnerchecker om detta uppföljs så printas..
+            }
         }
     }
         //Metod som kollar om den tryckta knappen ligger brevid den tomma knappen.
