@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 // klassen representerar ett fönster + den kan hantera knapptryckningar och andra interaktioner
 public class FifteenPuzzle extends JFrame implements ActionListener {
     private Randomize randomizer;
-
     public static ArrayList<JButton> buttons = new ArrayList<>();
+
 
     private int emptyIndex = 15; // den tomma brickans position i b listan,  startvärde 15 (sista positionen).
     private JPanel panel = new JPanel(new GridLayout(4, 4));
@@ -18,8 +19,9 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
         initializeGame();
-        //Anropar randomizeBoard metoden för att slumpa alla knappar vid uppstart av programmet.
-        randomizer.randomizeBoard();
+
+
+
     }
 
     public void initializeGame() { //för att skapa layout o skapa knapp,
@@ -34,6 +36,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
 
         add(panel, BorderLayout.CENTER);
         add(newGameButton, BorderLayout.SOUTH);
+
         newGame(); //Anropar metoden som initierar en ny spelomgång
         panel.setBackground(new Color(51,153,255)); // använder dessa rgb för få en blå ram runt knapparna
         setTitle("15-Puzzle"); //va den ska heta
@@ -57,6 +60,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
             button.setFont(boldTextForButtons);
             button.setForeground(Color.YELLOW);
         }
+
 
         JButton emptyButton = new JButton("");
         buttons.add(emptyButton);
