@@ -60,5 +60,6 @@ public class ButtonListener implements ActionListener {
         String buttonToMoveString = buttons.get(buttonToMove).getText();
         buttons.get(buttonToMove).setText(buttons.get(buttonMovedTo).getText());
         buttons.get(buttonMovedTo).setText(buttonToMoveString);
+        fifteenPuzzle.increaseClickCounter();
     }
 }

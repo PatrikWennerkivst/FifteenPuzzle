@@ -11,6 +11,8 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public static ArrayList<JButton> buttons = new ArrayList<>();
     private int emptyIndex = 15; // den tomma brickans position i b listan,  startvärde 15 (sista positionen).
     private final JPanel panel = new JPanel(new GridLayout(4, 4));
+    private int clickCounter = 0;
+    JLabel clickCounterLable = new JLabel("Number of moves: " + clickCounter);
 
 
     public FifteenPuzzle() {
@@ -23,9 +25,9 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public void initializLayout() { //för att skapa layout o skapa knapp,
         setLayout(new BorderLayout()); //layouten för fönstret
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
+        add(clickCounterLable, BorderLayout.NORTH);
         initializeNewGameButton("New Game");      //skapar spelets newgame knapp
         add(panel, BorderLayout.CENTER);
-
         newGame(); //Anropar metoden som initierar en ny spelomgång
         panel.setBackground(new Color(51,153,255)); // använder dessa rgb för få en blå ram runt knapparna
         setTitle("15-Puzzle"); //va den ska heta
@@ -67,6 +69,8 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
 
     public void newGame() {
         panel.removeAll();
+        clickCounter = 0;
+        clickCounterLable.setText("Number of moves: " + clickCounter);
         buttons.clear();
         initializePanelButtons(15);
         panel.revalidate(); //''
@@ -87,5 +91,10 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
 
     public void setEmptyIndex(int newEmptyIndex) {
         this.emptyIndex = newEmptyIndex;
+    }
+
+    public void increaseClickCounter() {
+        this.clickCounter++;
+        clickCounterLable.setText("Number of moves: " + clickCounter);
     }
 }
