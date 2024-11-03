@@ -71,7 +71,6 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         initializePanelButtons(15);
         panel.revalidate(); //''
         panel.repaint(); //Uppdaterar panelens layout och säkerställer att alla ändringar visas korrekt.
-
     }
 
     @Override
