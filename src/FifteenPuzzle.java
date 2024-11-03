@@ -7,34 +7,29 @@ import java.util.ArrayList;
 
 // klassen representerar ett fönster + den kan hantera knapptryckningar och andra interaktioner
 public class FifteenPuzzle extends JFrame implements ActionListener {
-    private Randomize randomizer;
+    private final Randomize randomizer;
     public static ArrayList<JButton> buttons = new ArrayList<>();
     private int emptyIndex = 15; // den tomma brickans position i b listan,  startvärde 15 (sista positionen).
-    private JPanel panel = new JPanel(new GridLayout(4, 4));
-    private JButton newGameButton; //för att starta om spelet
+    private final JPanel panel = new JPanel(new GridLayout(4, 4));
+
 
     public FifteenPuzzle() {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
         initializeGame();
         randomizer.randomizeBoard();
-
-
     }
 
     public void initializeGame() { //för att skapa layout o skapa knapp,
         setLayout(new BorderLayout()); //layouten för fönstret
-
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
-        newGameButton = new JButton("New Game");
+        JButton newGameButton = new JButton("New Game"); //för att starta om spelet
         newGameButton.addActionListener(e -> {
             newGame();
             randomizer.randomizeBoard();
         });
-
         add(panel, BorderLayout.CENTER);
         add(newGameButton, BorderLayout.SOUTH);
-
         newGame(); //Anropar metoden som initierar en ny spelomgång
         panel.setBackground(new Color(51,153,255)); // använder dessa rgb för få en blå ram runt knapparna
         setTitle("15-Puzzle"); //va den ska heta
