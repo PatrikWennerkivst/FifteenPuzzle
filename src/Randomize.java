@@ -9,11 +9,9 @@ public class Randomize implements ActionListener {
     // JButton randomButton;
     private FifteenPuzzle fifteenPuzzle;
 
-
     public Randomize (FifteenPuzzle randomizePuzzle) {
         this.fifteenPuzzle  = randomizePuzzle;
     }
-
 
     //en metod för att randomizera knapparna 1-15 vid knapp tryck av new game
     public void randomizeBoard() {
@@ -29,9 +27,7 @@ public class Randomize implements ActionListener {
         for (int i = 0; i < 15; i++) { // genom att uppdatera knapparna m dem slumpade numrerna,
             buttons.get(i).setText(numbers.get(i)); //korrekta version
         }
-
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
