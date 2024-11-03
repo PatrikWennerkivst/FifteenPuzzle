@@ -16,26 +16,32 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public FifteenPuzzle() {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
-        initializeGame();
-        randomizer.randomizeBoard();
+        initializLayout();              //skapar spelets layout
+        initializeNewGameButton();      //skapar spelets newgame knapp
+        randomizer.randomizeBoard();    //slumpar spelets alla knappar
     }
 
-    public void initializeGame() { //för att skapa layout o skapa knapp,
+    public void initializLayout() { //för att skapa layout o skapa knapp,
         setLayout(new BorderLayout()); //layouten för fönstret
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
-        JButton newGameButton = new JButton("New Game"); //för att starta om spelet
-        newGameButton.addActionListener(e -> {
-            newGame();
-            randomizer.randomizeBoard();
-        });
+
         add(panel, BorderLayout.CENTER);
-        add(newGameButton, BorderLayout.SOUTH);
+
         newGame(); //Anropar metoden som initierar en ny spelomgång
         panel.setBackground(new Color(51,153,255)); // använder dessa rgb för få en blå ram runt knapparna
         setTitle("15-Puzzle"); //va den ska heta
         setSize(500, 500); //strlk
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //så d stängs korrekt eft
         setVisible(true); // synlig
+    }
+
+    public void initializeNewGameButton() {
+        JButton newGameButton = new JButton("New Game"); //för att starta om spelet
+        newGameButton.addActionListener(e -> {
+            newGame();
+            randomizer.randomizeBoard();
+        });
+        add(newGameButton, BorderLayout.SOUTH);
     }
 
     public void newGame() {
