@@ -9,8 +9,6 @@ import java.util.ArrayList;
 public class FifteenPuzzle extends JFrame implements ActionListener {
     private Randomize randomizer;
     public static ArrayList<JButton> buttons = new ArrayList<>();
-
-
     private int emptyIndex = 15; // den tomma brickans position i b listan,  startvärde 15 (sista positionen).
     private JPanel panel = new JPanel(new GridLayout(4, 4));
     private JButton newGameButton; //för att starta om spelet
@@ -30,7 +28,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
         newGameButton = new JButton("New Game");
         newGameButton.addActionListener(e -> {
-            restartGame();
+            newGame();
             randomizer.randomizeBoard();
         });
 
@@ -73,10 +71,6 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
 
         panel.revalidate(); //''
         panel.repaint(); //Uppdaterar panelens layout och säkerställer att alla ändringar visas korrekt.
-    }
-
-    private void restartGame() {
-        newGame();
     }
 
     @Override
