@@ -18,6 +18,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         randomizer = new Randomize(this);
         initializLayout();              //skapar spelets layout
         initializeNewGameButton();      //skapar spelets newgame knapp
+        initializePanelButtons(15);
         randomizer.randomizeBoard();    //slumpar spelets alla knappar
     }
 
@@ -35,7 +36,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         setVisible(true); // synlig
     }
 
-    public void initializeNewGameButton() {
+    private void initializeNewGameButton() {
         JButton newGameButton = new JButton("New Game"); //för att starta om spelet
         newGameButton.addActionListener(e -> {
             newGame();
@@ -43,14 +44,11 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         });
         add(newGameButton, BorderLayout.SOUTH);
     }
-
-    public void newGame() {
-        panel.removeAll();
-        buttons.clear();
+    private void initializePanelButtons(int amountOfButtons) {
         //Skapara en font för alla knappar som jag sedan lägger in i alla knappar
         Font boldTextForButtons = new Font("Arial", Font.BOLD, 16);
 
-        for (int i = 1; i <= 15; i++) { // läggs till i till i både buttons-listan och panel.
+        for (int i = 1; i <= amountOfButtons; i++) { // läggs till i till i både buttons-listan och panel.
             JButton button = new JButton(String.valueOf(i));
             buttons.add(button);
             panel.add(button);
@@ -59,8 +57,6 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
             button.setFont(boldTextForButtons);
             button.setForeground(Color.YELLOW);
         }
-
-
         JButton emptyButton = new JButton("");
         buttons.add(emptyButton);
         emptyButton.setBackground(Color.BLACK);
@@ -69,7 +65,11 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         panel.add(emptyButton);
         emptyIndex = 15;
         emptyButton.addActionListener(new ButtonListener(this));
+    }
 
+    public void newGame() {
+        panel.removeAll();
+        buttons.clear();
         panel.revalidate(); //''
         panel.repaint(); //Uppdaterar panelens layout och säkerställer att alla ändringar visas korrekt.
     }
