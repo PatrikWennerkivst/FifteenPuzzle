@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 // klassen representerar ett fönster + den kan hantera knapptryckningar och andra interaktioner
 public class FifteenPuzzle extends JFrame implements ActionListener {
     private Randomize randomizer;
@@ -18,11 +19,13 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
         initializeGame();
+        //Anropar randomizeBoard metoden för att slumpa alla knappar vid uppstart av programmet.
+        randomizer.randomizeBoard();
+
     }
 
     public void initializeGame() { //för att skapa layout o skapa knapp,
         setLayout(new BorderLayout()); //layouten för fönstret
-
 
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
         newGameButton = new JButton("New Game");
@@ -31,14 +34,13 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
             randomizer.randomizeBoard();
         });
 
-
         add(panel, BorderLayout.CENTER);
         add(newGameButton, BorderLayout.SOUTH);
 
         newGame(); //Anropar metoden som initierar en ny spelomgång
-
+        panel.setBackground(new Color(51,153,255)); // använder dessa rgb för få en blå ram runt knapparna
         setTitle("15-Puzzle"); //va den ska heta
-        setSize(400, 400); //strlk
+        setSize(500, 500); //strlk
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //så d stängs korrekt eft
         setVisible(true); // synlig
     }
@@ -46,19 +48,25 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public void newGame() {
         panel.removeAll();
         buttons.clear();
-        
-
+        //Skapara en font för alla knappar som jag sedan lägger in i alla knappar
+        Font boldTextForButtons = new Font("Arial", Font.BOLD, 16);
 
         for (int i = 1; i <= 15; i++) { // läggs till i till i både buttons-listan och panel.
             JButton button = new JButton(String.valueOf(i));
             buttons.add(button);
             panel.add(button);
             button.addActionListener(new ButtonListener(this));
+            button.setBackground(Color.BLACK);
+            button.setFont(boldTextForButtons);
+            button.setForeground(Color.YELLOW);
         }
 
 
         JButton emptyButton = new JButton("");
         buttons.add(emptyButton);
+        emptyButton.setBackground(Color.BLACK);
+        emptyButton.setForeground(Color.YELLOW);
+        emptyButton.setFont(boldTextForButtons);
         panel.add(emptyButton);
         emptyIndex = 15;
         emptyButton.addActionListener(new ButtonListener(this));
