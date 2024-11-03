@@ -17,15 +17,13 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
         initializLayout();              //skapar spelets layout
-        initializeNewGameButton("New Game");      //skapar spelets newgame knapp
-        initializePanelButtons(15);
         randomizer.randomizeBoard();    //slumpar spelets alla knappar
     }
 
     public void initializLayout() { //för att skapa layout o skapa knapp,
         setLayout(new BorderLayout()); //layouten för fönstret
         //en knapp med texten "New Game". Genom addActionListener anger man att knappen ska anropa restartGame när den trycks
-
+        initializeNewGameButton("New Game");      //skapar spelets newgame knapp
         add(panel, BorderLayout.CENTER);
 
         newGame(); //Anropar metoden som initierar en ny spelomgång
@@ -70,8 +68,10 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
     public void newGame() {
         panel.removeAll();
         buttons.clear();
+        initializePanelButtons(15);
         panel.revalidate(); //''
         panel.repaint(); //Uppdaterar panelens layout och säkerställer att alla ändringar visas korrekt.
+
     }
 
     @Override
