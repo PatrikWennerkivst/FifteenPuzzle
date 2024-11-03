@@ -20,7 +20,7 @@ public class CheckWinner {
 
     public static void winMessage() {
         JOptionPane.showMessageDialog(null, "CONGRATULATION! You ARE THE WINNER!");
-        // vet int vf de blir null, å vet inte om de funkar? känns som ja missat ngt!
+        // vet int vf de blir null, å vet inte om de funkar? känns som ja missat ngt! // behöver mergaes för å se
 
     }
 }
