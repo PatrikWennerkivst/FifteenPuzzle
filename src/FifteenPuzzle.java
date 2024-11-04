@@ -19,7 +19,7 @@ public class FifteenPuzzle extends JFrame implements ActionListener {
         //klassen anropar metoden initializeGame, som skapar layouten för spelplanen och placerar knapparna.
         randomizer = new Randomize(this);
         initializLayout();              //skapar spelets layout
-        randomizer.randomizeBoard();    //slumpar spelets alla knappar
+        //randomizer.randomizeBoard();    //slumpar spelets alla knappar
     }
 
     public void initializLayout() { //för att skapa layout o skapa knapp,
